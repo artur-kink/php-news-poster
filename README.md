@@ -9,6 +9,8 @@ This project is at the most basic level a database that stores posts and a few p
 The implementation of displaying posts on the site is left to the user. Not forcing anyone to change their sites
 around the project.
 
+MIT license.
+
 Icons
 ===============
 Icons used are from http://www.fatcow.com/free-icons

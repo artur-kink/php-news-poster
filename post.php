@@ -63,6 +63,7 @@
 <html>
     <head>
         <title>Create new post</title>
+        <link href="poster_style.css"  rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php if($_GET["action"] == "edit"){ ?>
@@ -70,23 +71,25 @@
         <?php }else{ ?>
         <form action="post.php?action=submit" method="post">
         <?php } ?>
-
             <div>
-                <label for="title">Title:</label>
-                <input type="text" name="title" value="<?php echo $title;?>"/>
-            </div>
+                Create new post:
+                <div class="input_div">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" value="<?php echo $title;?>"/>
+                </div>
 
-            <div>
-                <label for="body">Body:</label>
-                <textarea rows="4" cols="60" name="body"><?php echo $body;?></textarea>
-            </div>
+                <div class="input_div">
+                    <label for="body">Body:</label><br/>
+                    <textarea rows="4" cols="60" name="body" id="body"><?php echo $body;?></textarea>
+                </div>
 
-            <div>
-                <?php if($_GET["action"] == "edit"){ ?>
-                <input type="submit" value="Save"/>
-                <?php }else{ ?>
-                <input type="submit" value="Post"/>
-                <?php } ?>
+                <div>
+                    <?php if($_GET["action"] == "edit"){ ?>
+                    <input type="submit" value="Save"/>
+                    <?php }else{ ?>
+                    <input type="submit" value="Post"/>
+                    <?php } ?>
+                </div>
             </div>
         </form>
     </body>
