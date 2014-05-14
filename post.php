@@ -9,14 +9,15 @@
         $title = $_POST["title"];
         $body = $_POST["body"];
 
-        $result = $mysqli->query("insert into posts(title, body)" .
-            "values('" . $title . "', '" . $body . "');");
+        $stmt = $mysqli->prepare("insert into posts(title, body) values(?, ?);");
+        $stmt->bind_param("ss", $title, $body);
+        $result = $stmt->execute();
+        $stmt->close();
 
         if($result){
             header('Location: posts.php');
             exit();
         }else{
-            //
         }
     }else if($_GET["action"] == "edit"){
         //Retrieve data for edit form.
@@ -39,9 +40,11 @@
         $title = $_POST["title"];
         $body = $_POST["body"];
 
-        $result = $mysqli->query("update posts set title= " .
-            "'" . $title . "', body = '" . $body . "' where id = " . $post_id);
-        
+        $stmt = $mysqli->prepare("update posts set title = ?, body = ? where id = " . $post_id);
+        $stmt->bind_param("ss", $title, $body);
+        $result = $stmt->execute();
+        $stmt->close();
+
         if($result){
             header('Location: posts.php');
             exit();
